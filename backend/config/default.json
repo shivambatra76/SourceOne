@@ -1,0 +1,13 @@
+{
+    "mongodb": {
+      "url": "mongodb://localhost:23000/sourceOne",
+      "options": {
+        "useNewUrlParser": true,
+        "useUnifiedTopology": true
+      }
+    },
+    "server": {
+      "port": 5000
+    }
+  }
+  
