@@ -57,8 +57,32 @@ app.post('/rent-charges', async (req, res) => {
       return res.status(404).json({ error: 'Customer has not borrowed this book' });
     }
     const daysRented = Math.ceil((new Date() - customerBookRecord.lend_date) / (1000 * 60 * 60 * 24));
-    const chargesPerDay = book.book_type ? RENTAL_CHARGES[book.book_type]:1.5;
-    const totalCharges = daysRented * chargesPerDay ;
+    let chargePerDay;
+    let minimumCharges;
+    switch (book.book_type) {
+      case 'Fiction':
+        chargePerDay = 3;
+        minimumCharges = 0;
+        break;
+      case 'Novel':
+        chargePerDay = 1.5;
+        minimumCharges = 4.5;
+        break;
+      default:
+        if (daysRented <= 2) {
+          chargePerDay = 1;
+          minimumCharges = 2;
+        } else {
+          chargePerDay = 1.5;
+          minimumCharges = 0;
+        }
+    }
+    let totalCharges;
+    if (daysRented <= 2) {
+      totalCharges = Math.max(daysRented * chargePerDay, minimumCharges);
+    } else {
+      totalCharges = minimumCharges + (daysRented - 2) * chargePerDay;
+    }
     res.json({ totalCharges });
   } catch (error) {
     console.error('Error calculating rent charges:', error);
