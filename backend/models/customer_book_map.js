@@ -8,6 +8,6 @@ const customerBookMapSchema = new mongoose.Schema({
   expected_return_date: Date
 });
 
-const CustomerBookMap = mongoose.model('customer_book', customerBookMapSchema);
+const CustomerBookMap = mongoose.model('customer_book', customerBookMapSchema,'customer_book');
 
 module.exports = { CustomerBookMap };
