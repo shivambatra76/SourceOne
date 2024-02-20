@@ -1,4 +1,3 @@
-```markdown
 ## Bookstore API
 
 ### Assignment Summary:
@@ -18,7 +17,7 @@ The Store wants to change the charges on the books depending on the types of the
 3. **Story 3:** 
 The store decided to alter the calculations for Regular books and novels. Now for Regular books, the first 2 days charges will be Rs 1 per day and 1.5 Rs thereafter. Minimum charges will be considered as Rs 2 if days rented is less than 2 days. Similarly for Novel minimum charges are introduced as 4.5 Rs if days rented is less than 3 days.
 
-```
+
 
 ### Running the Project:
 
