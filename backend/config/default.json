@@ -9,6 +9,11 @@
     "server": {
       "port": 5000
     },
-  "defaultRentalCharges":1
+  "defaultRentalCharges":1,
+  "rentalCharges":{
+    "Fiction":3,
+    "Novel":1.5,
+    "Regular":1.5
+  }
 }
   

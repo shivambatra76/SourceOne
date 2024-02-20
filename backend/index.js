@@ -9,7 +9,7 @@ const { CustomerBookMap } = require('./models/customer_book_map');
 
 const app = express();
 const PORT = config.get('server.port');
-const DEFAULT_RENTAL_CHARGES = config.get("defaultRentalCharges");
+const RENTAL_CHARGES = config.get("rentalCharges"); 
 // Connection to MongoDB
 mongoose.connect(config.get('mongodb.url'), config.get('mongodb.options'));
 const db = mongoose.connection;
@@ -57,7 +57,8 @@ app.post('/rent-charges', async (req, res) => {
       return res.status(404).json({ error: 'Customer has not borrowed this book' });
     }
     const daysRented = Math.ceil((new Date() - customerBookRecord.lend_date) / (1000 * 60 * 60 * 24));
-    const totalCharges = daysRented * DEFAULT_RENTAL_CHARGES ;
+    const chargesPerDay = book.book_type ? RENTAL_CHARGES[book.book_type]:1.5;
+    const totalCharges = daysRented * chargesPerDay ;
     res.json({ totalCharges });
   } catch (error) {
     console.error('Error calculating rent charges:', error);
