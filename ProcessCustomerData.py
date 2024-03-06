@@ -7,7 +7,7 @@ class PreProcessing:
         self.DEFAULT_DATABASE = "sourceOne"
         self.DEFAULT_CUSTOMERS_TABLE_NAME = "customers"
         self.DEFAULT_BOOKS_TABLE_NAME = "books"
-        self.DEFAULT_CUSTOMER_BOOK_TABLE_NAME = "customer_book"
+        self.DEFAULT_CUSTOMER_BOOK_TABLE_NAME = "rental"
         self.MONGO_DB_PORT = 23000
         self.customer_books_map = []
         self.books = []

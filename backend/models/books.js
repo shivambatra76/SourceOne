@@ -1,15 +1,24 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose')
+const Schema = mongoose.Schema;
+var BookModel = new Schema({
+  book_id: {
+    type: String
+  },
+  author_name: {
+    type: String
+  },
+  book_name: {
+    type: String}
+    ,
+  book_type:{
+    type: String
+  }
 
+},{
+  timestamps: true,
+  toJSON: { virtuals: true },
+  toObject: { virtuals: true }
+})
 
-const bookSchema = new mongoose.Schema({
-  book_id: String,
-  author_name: String,
-  book_name: String,
-  book_type:String
-});
+module.exports = mongoose.model('books', BookModel);
 
-
-
-const Book = mongoose.model('books', bookSchema);
-
-module.exports = {Book };

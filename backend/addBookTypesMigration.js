@@ -1,5 +1,6 @@
 const mongoose = require('mongoose');
-const { Book } = require('./models/books');
+// const { BookModel } = require('./models');
+const Models = require('./models');
 const config = require('config');
 mongoose.connect(config.get('mongodb.url'), config.get('mongodb.options'));
 
@@ -11,12 +12,14 @@ const bookTypes = ["Regular", "Fiction", "Novel"];
 
 async function addBookTypeToBooks() {
   try {
-    const books = await Book.find();
+
+
+    const books = await Models.BooksModel.find();
     for (const book of books) {
       console.log(JSON.stringify(book));
       const randomIndex = Math.floor(Math.random() * bookTypes.length);
       const randomBookType = bookTypes[randomIndex];
-      await Book.updateOne({ _id: book._id }, { $set: { book_type: randomBookType } });
+      await Models.BooksModel.updateOne({ _id: book._id }, { $set: { book_type: randomBookType } });
     }
 
     console.log('Book types added successfully.');

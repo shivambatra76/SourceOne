@@ -1,11 +1,19 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
-var CustomerModel = new Schema({
+
+
+var RentalModel = new Schema({
   customer_id: {
     type: Number
   },
-  customer_name: {
+  book_id: {
     type: String
+  },
+  lend_date: {
+    type: String
+  },
+  expected_return_date:{
+    type: Date
   }
 
 },{
@@ -14,4 +22,6 @@ var CustomerModel = new Schema({
   toObject: { virtuals: true }
 })
 
-module.exports = mongoose.model('customers', CustomerModel);
+module.exports = mongoose.model('rental', RentalModel,'rental');
+
+
